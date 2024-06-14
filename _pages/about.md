@@ -12,9 +12,9 @@ Collaborators: Danilo Liarte, Itai Cohen, Jim Sethna
 
 We extend the analysis of a type of effective medium theory that makes predictions for the dynamical response of elastic networks that are randomly diluted. Mean-field theories tend to describe critical exponents and universal scaling functions for physical quantities close to transitions well above the upper critical dimension. The CPA does even better: similar to mode-coupling theories, it predicts the existence of an upper critical dimension in dynamical quantities in two dimensions, which is widely believed to be accurate for the jamming transition. We investigate the logarithmic corrections to scaling present in the upper critical dimension, and give explicit formulas for universal scaling functions of viscoelastic moduli above, in, and below the upper critical dimension. We find that the scaling variable that induces the instability of the mean-field fixed point constitutes a nonperturbative effect in infinite-dimensional models. (To appear)
 
-<img src="images/UCD1.png"/>
+<img src="/images/UCD1.png"/>
 
-<img src="images/UCD2.png"/>
+<img src="/images/UCD2.png"/>
 
 ## Topological defects in exotic nematic phases of bent-core liquid crystals
 Collaborators: Leo Radzihovsky
