@@ -3,8 +3,8 @@ title: "Statistical Mechanics 4488/6562"
 collection: teaching
 type: "Graduate course"
 permalink: /teaching/stat-mech
-date: 2024
 venue: "Cornell University"
+date: 2024
 location: "Ithaca, NY"
 ---
 
