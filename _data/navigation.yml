@@ -1,7 +1,12 @@
 # main links links
 main:
+  - title: "Home"
+    url: /
+
+{% comment %}
   - title: "Talks"
     url: /talks/    
+{% endcomment %}
 
   - title: "Teaching"
     url: /teaching/
