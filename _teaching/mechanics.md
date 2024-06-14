@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate course"
 permalink: /teaching/mechanics
 venue: "Cornell University"
-date: 2023
+date: 2023-01-01
 location: "Ithaca, NY"
 ---
 ## Fall 2019, Spring 2020, Fall 2020, Fall 2021, Fall 2023
