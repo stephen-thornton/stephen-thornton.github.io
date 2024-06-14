@@ -3,6 +3,7 @@ title: "Mechanics & Heat 1112"
 collection: teaching
 type: "Undergraduate course"
 permalink: /teaching/mechanics
+date: 2023
 venue: "Cornell University"
 location: "Ithaca, NY"
 ---
