@@ -3,10 +3,8 @@ main:
   - title: "Home"
     url: /
 
-{% comment %}
-  - title: "Talks"
-    url: /talks/    
-{% endcomment %}
+#  - title: "Talks"
+#    url: /talks/    
 
   - title: "Teaching"
     url: /teaching/
