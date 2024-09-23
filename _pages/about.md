@@ -30,7 +30,7 @@ Collaborators: William Wang, Bulbul Chakraborty, Anna Barth, Navneet Singh, Japh
 
 We perform a detailed numerical investigation of the critical phenomena present within a bond-diluted triangular lattice in which bonds are preferentially removed in a particular direction, inducing a long-wavelength anisotropy. Anticipating different scaling for each of the statistically independent long-wavelength elastic moduli, we measure each component of the elastic tensor by performing several distinct shears. We find an isotropic rigidity percolation transition that, upon increasing anisotropy, splits into multiple rigidity transitions for each component of the elastic tensor. There is an intermediate phase where the lattice has linear elasticity in only one shear direction. We quantify the new critical exponents associated with the pair of transitions, and perform a crossover scaling analysis to find the shapes of the crossover scaling functions for each independent elastic modulus. ([arXiv](https://arxiv.org/abs/2409.08565))
 
-<img src="/images/Will1.png"/ width="48">
+<img src="/images/Will1.png" width="48">
 
 <img src="/images/Will2.png"/>
 
