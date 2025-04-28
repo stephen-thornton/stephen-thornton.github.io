@@ -42,7 +42,7 @@ In this round, 10 containers are presented. Each container has a different amoun
 
 $$w_i = \frac{c_i}{n_i+100*f_i}.$$
 
-As a twist, we (and everyone else) also have the option to selecct a second box, for the "low" price of 50,000 seashells (roughly the amount that was won in the entire first round).
+As a twist, we (and everyone else) also have the option to select a second box, for the "low" price of 50,000 seashells (roughly the amount that was won in the entire first round).
 
 To study the structure of this problem, it is useful to find the *Nash equilibrium*, which is a set of strategies for each team whereupon, given everyone else's strategy remains fixed, you can do no better by changing your strategy. The strategy in complicated games is usually a *mixed* one, meaning that each team finds that using a probability distribution supported over different selections of boxes that is optimal (rather than simply picking a particular box).
 
@@ -76,19 +76,45 @@ $$n_i=\left\lbrace 1, 6, 3, 1, 10, 2, 4, 2, 4, 8 \right\rbrace.$$
 
 Using Mathematica to solve the 10 independent simultaneous equations (constraint + equality of the 10 expectation values), we find the following equilibrium strategy:
 
-$$p_i=\left\lbrace \right\rbrace$$
+$$p_i=\left\lbrace 0.018, 0.167, 0.075, 0.038, 0.155, 0.068, 0.102, 0.037, 0.167, 0.172 \right\rbrace$$
 
 and a Lagrange multiplier
 
-$$\lambda=$$
+$$\lambda=35,248.2$$
 
-Because the Lagrange multiplier $\lambda$ is less than the cost of opening another container (50,000 seashells), the Nash equilibrium is indeed this probability distribution over the set of one-container strategies (this should be contrasted with the Round 4 result). 
+Because the Lagrange multiplier $\lambda$ is less than the cost of opening another container (50,000 seashells), the Nash equilibrium is indeed this probability distribution over the set of one-container strategies (this should be contrasted with the Round 4 result).
+
+Now for the question of which container to pick. If we had strong beliefs about which container others would pick (relative to the Nash Equilibrium), we could exploit these to do better than the other teams. However, I assume the other teams are playing optimally, and roll a weighted die with the probabilities of the Nash equilibrium strategy. I end up selecting the 9th box. 24.06% of the other teams ended up selecting this box, which is significanlty higher than the expected (from Nash) of ~16.7%. As a result, I only earned 26,015 seashells instead of the expected 35,248.2. However, the result that I should definitely *not* pick a second box was certainly correct.
 
 # Round 3: turtle trading
-Round 3
+In this round, there is a "large collection" of turtles that are looking to trade flippers with you. You will set a *bid price*, which is the price you will buy all flippers at. The turtles will sell you their flippers at your bid price as long as it is above their *reserve price*, which can be thought of as the minimal value that each turtle values its flipper. You can then sell the flippers at 320 seashells per flipper. The distribution of reserve prices is 
+
+$$\rho\sim U\left([160,200]\cup[250,320]\right).$$
+
+We are told the following fact, which I think many teams misinterpreted: "The distribution of reserve prices is uniform between 160–200 and 250–320, but none of the Sea Turtles will trade between 200 and 250 due to some ancient superstition." Some teams interpreted the second part of this sentence as an explanation of the strange distribution (why do no turtles have reserve prices between 200 and 250? Superstition!). However, as it is written, it is implying something more severe: 
+
+1) It specifically says none of the turtles will *trade* between 200 and 250.
+2) The turtles trade flippers with you at your *bid* price.
+
+Conclusion: exactly ZERO turtles will trade with you if you place a bid between 200 and 250. This won't change many of my conclusions, but it does explain some peculiarities in the graphs I will show.
+
+First of all, we can compute our expected return per flipper (I assume each of the large number of turtles has one flipper to trade). Suppose our bid price is $b_i$. Then our expected return per flipper is the difference between our sale and purchase price, multiplied by the expected fraction of turtles that trade with us:
+
 
 # Round 4: competitive suitcase-picking
-This round ended up being nearly identical to Round 2 in theory, but with more interesting results given the selected numbers. 
+This round ended up being nearly identical to Round 2 in theory, but with more interesting results given the selected numbers. There are now 20 suitcases to choose from, with identical rules for sharing as in Round 2. However, one can choose to select a second suitcase for a cost of 50,000 seashells, and a third suitcase for 100,000 seashells. Starting with the same philosophy as Round 2, we first restrict ourselves to the simpler case of one-suitcase strategies and find the distribution where their expected values are equal. In this case, the Lagrange multiplier is $\lambda = 56,613.8$, meaning that a team can improve its earnings by selecting an additional suitcase. This means that the Nash equilibrium does not contain only one-suitcase strategies, in contrast to Round 2.
+
+If we do the next-simplest thing, and restrict to one- and two-suitcase strategies, we have 210 possible strategies to pick from (20 + 20 choose 2). This means we would need to solve 210 simultaneous equations to find this restricted equilibrium strategy (which means we would need to type them into Python or Mathematica, also). Let's do this in a more creative way, using a stochastic simulation.
+
+Suppose we start a large number of teams $N$ with random selections of boxes (some teams choose one box, others choose two or three). Next, we pick a team at random. Holding all of the other teams' choices of boxes fixed, we allow the selected team to choose its strategy so that they have the largest possible return. We rinse and repeat this procedure, randomly selecting teams and allowing them to adjust their strategy to be optimal.
+
+Now let's look at that simulation in a different way. The number of teams is essentially irrelevant; we are after the probability distribution on the set of all possible strategies. When we select a team at random, that team is using strategy $i$ with probability $f_i$, the total fraction of teams using strategy $i$. The optimal strategy for that team depends only on the $\left\lbrace f_i\right\rbrace$ of every other team. If this team switches to strategy $j$, then the fraction of teams using eacch strategy changes like
+
+$$f_i\rightarrow f_i-\frac{1}{N},   f_j\rightarrow f_j+\frac{1}{N}$$
+
+so $N$ becomes a parameter that controls the size of the perturbations to each $f_i$ in a Monte Carlo step. Now we notice that we don't need to keep track of what each of the $N$ teams is doing in order to perform a Monte Carlo step – we only need to know the values $\left\lbrace f_i\right\rbrace$. We start by initializing a random initial condition for the $\left\lbrace f_i\right\rbrace$ that sums to $1$. Then we update them based on the above algorithm, selecting a strategy at random from the distribution $\left\lbrace f_i\right\rbrace$ and moving $N^{-1}$ of probability into the optimal strategy given the $\left\lbrace f_i\right\rbrace$. This simulation rapildy converges to a fixed distribution on the $f_i$.
+
+As we computed directly, the distribution $\left\lbrace f_i\right\rbrace$ contains two-container strategies, but it appears to not contain any three-container strategies (it is OK to pick a second container, but not a third). The probability condenses onto the 210 one- and two-container strategies. Only about 10% of teams end up selecting two containers. Because this was an involved enoungh simulation, I ended up picking the two-container strategy with highest probability in the Nash equilibrium, expecting it not to be overselected by others. This involved selecting the suitcases with 73,000 and 79,000 seashells in them. This ultimately led to a payoff of 65,801 seashells, which is higher than the expected value of . 
 
 # Round 5: reading comprehension
 Round 5
