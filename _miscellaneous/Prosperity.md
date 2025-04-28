@@ -11,7 +11,7 @@ location: "Ithaca, NY"
 ## Overview
 *Prosperity* is a 15-day trading challenge hosted by IMC Trading, a trading firm. The 15-day challenge is separated into 5 rounds, each of which lasts 72 hours. Within each round, teams compete in a pair of challenges – an *algorithmic* challenge, which involves noticing trends in markets and writing Python code to automate buying and selling of certain commodities, and a *manual* challenge, which involves submitting a single answer to a trading-based question. I focused on solving the manual challenges. My thought process and the outcomes are detailed below.
 
-# Round 1
+# Round 1: Currency Exchange
 In Round 1, we were given the following table of currencies to trade, along with their corresponding exchange rates:
 
 |                 |  Snowballs  |  Pizza  |  Silicon Nuggets  |  Seashells  |
@@ -33,14 +33,16 @@ seashells->snowballs->silicon nuggets->pizza->snowballs->seashells.
 
 This sequence multiplies your starting currency by 1.08868032. Many other participating teams also found this optimal trade, leading to a ~1000-way tie in the manual Round 1.
 
-# Round 2
-Round 2
+# Round 2: competitive container-picking
+In this round, several containers are presented. Each container has a different amount of seashells inside of it $c_i$. When we select a box, we share its contents with some number of *individuals* $n_i$ (also printed on the box) and also some percentage of teams that select the same box as we do. To be precise, the payout $w_i$ from selecting box $i$ with $c_i$ seashells and $n_i$ individuals when a fraction $f_i$ of the total number of teams also select that box is
 
-# Round 3
+$$w_i = \frac{c_i}{n_i+100*f_i}.$$
+
+# Round 3: turtle trading
 Round 3
 
-# Round 4
-Round 4
+# Round 4: competitive suitcase-picking
+This round ended up being nearly identical to Round 2 in theory, but with more interesting results given the selected numbers. 
 
-# Round 5
+# Round 5: reading comprehension
 Round 5
