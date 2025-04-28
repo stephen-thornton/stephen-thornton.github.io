@@ -50,9 +50,18 @@ We can start by studying a simplified game, where we are only allowed to pick on
 
 $$\left\langle w\right\rangle=\sum_ip_i\frac{c_i}{n_i+100*f_i}.$$
 
-For this strategy to be optimal, our team must not be able to do any better by changing our strategy. This means that 
+For this strategy to be optimal, our team must not be able to do any better by changing our strategy. However, we may not simply perturb each of the $p_i$ independently, since this would violate the constraint that the total probability is $1$. This constraint can be enforced using a Lagrange multiplier. Specifically, we can inspect the function
 
-$$\frac{\partial\left\langle w\right\rangle}{\partial p_j}=0 \textrm{    for all } p_j.$$
+$$\mathcal{L}=\sum_ip_i\frac{c_i}{n_i+100*f_i}-\lambda\left(\sum_ip_i-1\right).$$
+
+Then the statement that we are in an extremum with respect to our strategy is the statement
+
+$$\frac{\partial\mathcal{L}}{\partial p_j}=0 \textrm{    for all } p_j$$
+
+while the constraint is simultaneously enforced using 
+
+$$\frac{\partial\mathcal{L}}{\partial \lambda}=0.$$
+
 
 # Round 3: turtle trading
 Round 3
