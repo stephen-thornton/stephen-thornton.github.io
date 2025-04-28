@@ -94,11 +94,13 @@ $$\rho\sim U\left([160,200]\cup[250,320]\right).$$
 We are told the following fact, which I think many teams misinterpreted: "The distribution of reserve prices is uniform between 160–200 and 250–320, but none of the Sea Turtles will trade between 200 and 250 due to some ancient superstition." Some teams interpreted the second part of this sentence as an explanation of the strange distribution (why do no turtles have reserve prices between 200 and 250? Superstition!). However, as it is written, it is implying something more severe: 
 
 1) It specifically says none of the turtles will *trade* between 200 and 250.
-2) The turtles trade flippers with you at your *bid* price.
+2) The turtles *trade* flippers with you at your *bid* price.
 
 Conclusion: exactly ZERO turtles will trade with you if you place a bid between 200 and 250. This won't change many of my conclusions, but it does explain some peculiarities in the graphs I will show.
 
 First of all, we can compute our expected return per flipper (I assume each of the large number of turtles has one flipper to trade). Suppose our bid price is $b_i$. Then our expected return per flipper is the difference between our sale and purchase price, multiplied by the expected fraction of turtles that trade with us:
+
+$$r_1(b_1)=\left(320-b_1\right)\int_{160}^{b_1}\textrm{d}x \rho\left(x)$$
 
 
 # Round 4: competitive suitcase-picking
@@ -114,7 +116,7 @@ $$f_i\rightarrow f_i-\frac{1}{N},   f_j\rightarrow f_j+\frac{1}{N}$$
 
 so $N$ becomes a parameter that controls the size of the perturbations to each $f_i$ in a Monte Carlo step. Now we notice that we don't need to keep track of what each of the $N$ teams is doing in order to perform a Monte Carlo step – we only need to know the values $\left\lbrace f_i\right\rbrace$. We start by initializing a random initial condition for the $\left\lbrace f_i\right\rbrace$ that sums to $1$. Then we update them based on the above algorithm, selecting a strategy at random from the distribution $\left\lbrace f_i\right\rbrace$ and moving $N^{-1}$ of probability into the optimal strategy given the $\left\lbrace f_i\right\rbrace$. This simulation rapildy converges to a fixed distribution on the $f_i$.
 
-As we computed directly, the distribution $\left\lbrace f_i\right\rbrace$ contains two-container strategies, but it appears to not contain any three-container strategies (it is OK to pick a second container, but not a third). The probability condenses onto the 210 one- and two-container strategies. Only about 10% of teams end up selecting two containers. Because this was an involved enoungh simulation, I ended up picking the two-container strategy with highest probability in the Nash equilibrium, expecting it not to be overselected by others. This involved selecting the suitcases with 73,000 and 79,000 seashells in them. This ultimately led to a payoff of 65,801 seashells, which is higher than the expected value of . 
+As we computed directly, the distribution $\left\lbrace f_i\right\rbrace$ contains two-container strategies, but it appears to not contain any three-container strategies (it is OK to pick a second container, but not a third). The probability condenses onto the 210 one- and two-container strategies. Only about 10% of teams end up selecting two containers. Because this was an involved enoungh simulation, I ended up picking the two-container strategy with highest probability in the Nash equilibrium, expecting it not to be overselected by others. This involved selecting the suitcases with 73,000 and 79,000 seashells in them. This ultimately led to a payoff of 65,801 seashells, which is higher than the expected value over one-container strategies. Both of the selected containers ended up being worth more than 50,000 seashells.
 
 # Round 5: reading comprehension
 Round 5
