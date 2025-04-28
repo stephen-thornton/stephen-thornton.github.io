@@ -100,7 +100,7 @@ Conclusion: exactly ZERO turtles will trade with you if you place a bid between 
 
 First of all, we can compute our expected return per flipper (I assume each of the large number of turtles has one flipper to trade). Suppose our bid price is $b_i$. Then our expected return per flipper is the difference between our sale and purchase price, multiplied by the expected fraction of turtles that trade with us:
 
-$$r_1(b_1)=\left(320-b_1\right)\int_{160}^{b_1}\textrm{d}x \rho\left(x)$$
+$$r_1(b_1)=\left(320-b_1\right)\int_{160}^{b_1}\textrm{d}x \rho(x)$$
 
 
 # Round 4: competitive suitcase-picking
