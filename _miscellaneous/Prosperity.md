@@ -38,7 +38,7 @@ seashells->snowballs->silicon nuggets->pizza->snowballs->seashells.
 This sequence multiplies your starting currency by 1.08868032. Many other participating teams also found this optimal trade, leading to a ~1000-way tie in the manual Round 1.
 
 # Round 2: competitive container-picking
-In this round, several containers are presented. Each container has a different amount of seashells inside of it $c_i$. When we select a box, we share its contents with some number of *individuals* $n_i$ (also printed on the box) and also some percentage of teams that select the same box as we do. To be precise, the payout $w_i$ from selecting box $i$ with $c_i$ seashells and $n_i$ individuals when a fraction $f_i$ of the total number of teams also select that box is
+In this round, 10 containers are presented. Each container has a different amount of seashells inside of it $c_i$. When we select a box, we share its contents with some number of *individuals* $n_i$ (also printed on the box) and also some percentage of teams that select the same box as we do. To be precise, the payout $w_i$ from selecting box $i$ with $c_i$ seashells and $n_i$ individuals when a fraction $f_i$ of the total number of teams also select that box is
 
 $$w_i = \frac{c_i}{n_i+100*f_i}.$$
 
@@ -62,6 +62,27 @@ while the constraint is simultaneously enforced using
 
 $$\frac{\partial\mathcal{L}}{\partial \lambda}=0.$$
 
+Taking the derivative of $\mathcal{L}$ with respect to an arbitrary $p_j$, we find the relationship
+
+$$\frac{c_j}{n_j+100*f_j}=\lambda$$
+
+This gives us an interpretation of $\lambda$: it is the expected value of picking any of the boxes. The Nash equilibrium is achieved when all of the boxes have identical expected value. This can be used to find an equilibrium strategy $\left\lbrace p_i\right\rbrace$ by letting $f_i=p_i$. Now for some concrete numbers: the containers contain the following amounts:
+
+$$c_i=10,000*\left\lbrace 10, 80, 37, 17, 90, 31, 50, 20, 73, 89 \right\rbrace.$$
+
+These are shared with the following numbers of individuals:
+
+$$n_i=\left\lbrace 1, 6, 3, 1, 10, 2, 4, 2, 4, 8 \right\rbrace.$$
+
+Using Mathematica to solve the 10 independent simultaneous equations (constraint + equality of the 10 expectation values), we find the following equilibrium strategy:
+
+$$p_i=\left\lbrace \right\rbrace$$
+
+and a Lagrange multiplier
+
+$$\lambda=$$
+
+Because the Lagrange multiplier $\lambda$ is less than the cost of opening another container (50,000 seashells), the Nash equilibrium is indeed this probability distribution over the set of one-container strategies (this should be contrasted with the Round 4 result). 
 
 # Round 3: turtle trading
 Round 3
