@@ -52,7 +52,7 @@ $$\left\langle w\right\rangle=\sum_ip_i\frac{c_i}{n_i+100*f_i}.$$
 
 For this strategy to be optimal, our team must not be able to do any better by changing our strategy. This means that 
 
-$$\frac{\partial\left\langle w\right\rangle}{\partial p_j}=0\;\;\;\;\textrm{for all } p_j.$$
+$$\frac{\partial\left\langle w\right\rangle}{\partial p_j}=0 \textrm{    for all } p_j.$$
 
 # Round 3: turtle trading
 Round 3
