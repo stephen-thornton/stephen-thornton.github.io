@@ -16,10 +16,10 @@ In Round 1, we were given the following table of currencies to trade, along with
 
 |                 |  Snowballs  |  Pizza  |  Silicon Nuggets  |  Seashells  |
 |-----------------|-------------|---------|-------------------|-------------|
-|    Snowballs    |   1.00      |  1.45   |        0.52       |    0.72     |
-|      Pizza      |    0.70     |   1.00  |        0.31       |     0.48    |
-| Silicon Nuggets |   1.95      |  3.10   |     1.00          |   1.49      |
-| Seashells       |   1.34      | 1.98    |        0.64       |    1.00     |
+| Snowballs       |   1.00      |  1.45   |        0.52       |    0.72     |
+| Pizza           |   0.70      |  1.00   |        0.31       |    0.48     |
+| Silicon Nuggets |   1.95      |  3.10   |        1.00       |    1.49     |
+| Seashells       |   1.34      |  1.98   |        0.64       |    1.00     |
 
 where the row label is the item you have and the column label is the item you are converting your currency into. Our goal is to maximize our funds by performing a sequence of trades. We are constrained to start with seashells (the currency on our island) and end with seashells, and we are also constrained to make at most 5 trades.
 
@@ -89,7 +89,7 @@ Now for the question of which container to pick. If we had strong beliefs about 
 # Round 3: turtle trading
 In this round, there is a "large collection" of turtles that are looking to trade flippers with you. You will set a *bid price*, which is the price you will buy all flippers at. The turtles will sell you their flippers at your bid price as long as it is above their *reserve price*, which can be thought of as the minimal value that each turtle values its flipper. You can then sell the flippers at 320 seashells per flipper. The distribution of reserve prices is 
 
-$$\rho\sim U\left([160,200]\cup[250,320]\right).$$
+$$\rho(x) = \frac{1}{110}\left(\right)\Theta\left(\right)$$
 
 We are told the following fact, which I think many teams misinterpreted: "The distribution of reserve prices is uniform between 160–200 and 250–320, but none of the Sea Turtles will trade between 200 and 250 due to some ancient superstition." Some teams interpreted the second part of this sentence as an explanation of the strange distribution (why do no turtles have reserve prices between 200 and 250? Superstition!). However, as it is written, it is implying something more severe: 
 
@@ -98,10 +98,29 @@ We are told the following fact, which I think many teams misinterpreted: "The di
 
 Conclusion: exactly ZERO turtles will trade with you if you place a bid between 200 and 250. This won't change many of my conclusions, but it does explain some peculiarities in the graphs I will show.
 
-First of all, we can compute our expected return per flipper (I assume each of the large number of turtles has one flipper to trade). Suppose our bid price is $b_i$. Then our expected return per flipper is the difference between our sale and purchase price, multiplied by the expected fraction of turtles that trade with us:
+In the first part of this round, this is all of the information we have. We can compute our expected return per flipper (I assume each of the large number of turtles has one flipper to trade). Suppose our bid price is $b_i$. Then, so long as we don't bid between 200 and 250, our expected return per flipper is the difference between our sale and purchase price, multiplied by the expected fraction of turtles that trade with us:
 
-$$r_1(b_1)=\left(320-b_1\right)\int_{160}^{b_1}\textrm{d}x \rho(x)$$
+$$r_1(b_1)=\left(320-b_1\right)\int_{160}^{b_1}\textrm{d}x\textrm{ }\rho(x).$$
 
+Our return is 0 if we bid between 200 and 250. Plotting this gives a maximum of 480/11 seashells per flipper at a first bid price of $b_1=200$:
+
+
+
+In the second round, the rules are largely the same. However, the turtle are becoming more picky. If you bid above the reserve price of the turtle but *below the average second bid*, the turtle will only trade with you with probability
+
+$$p(b_2,b_{avg})=\left(\frac{320-b_{avg}}{320-b_2}\right)^3,$$
+
+which heavily suppresses how many turtles will trade with you if you bid below average. We can first plot the optimal second bid as a function of the average second bid:
+
+
+
+We can also plot the expected returns as a function of the optimal second bid:
+
+
+
+The mean return should never be less than 200, since no team will want to bid less than 200 (you will always do strictly worse, no matter what the average second bid is). At an average bid price of $320-10*33^{2/3}=217.117$, the optimal choice switches from bidding 200 to bidding 265. At averages above 265, you always do optimally when you bid the average. I ended up selecting 265 (the highest return for a reasonable range of bid prices), but this ended up killing me, as the average second bid was way higher at 286.
+
+Why was the average second bid so high? We can compute the 
 
 # Round 4: competitive suitcase-picking
 This round ended up being nearly identical to Round 2 in theory, but with more interesting results given the selected numbers. There are now 20 suitcases to choose from, with identical rules for sharing as in Round 2. However, one can choose to select a second suitcase for a cost of 50,000 seashells, and a third suitcase for 100,000 seashells. Starting with the same philosophy as Round 2, we first restrict ourselves to the simpler case of one-suitcase strategies and find the distribution where their expected values are equal. In this case, the Lagrange multiplier is $\lambda = 56,613.8$, meaning that a team can improve its earnings by selecting an additional suitcase. This means that the Nash equilibrium does not contain only one-suitcase strategies, in contrast to Round 2.
@@ -110,7 +129,7 @@ If we do the next-simplest thing, and restrict to one- and two-suitcase strategi
 
 Suppose we start a large number of teams $N$ with random selections of boxes (some teams choose one box, others choose two or three). Next, we pick a team at random. Holding all of the other teams' choices of boxes fixed, we allow the selected team to choose its strategy so that they have the largest possible return. We rinse and repeat this procedure, randomly selecting teams and allowing them to adjust their strategy to be optimal.
 
-Now let's look at that simulation in a different way. The number of teams is essentially irrelevant; we are after the probability distribution on the set of all possible strategies. When we select a team at random, that team is using strategy $i$ with probability $f_i$, the total fraction of teams using strategy $i$. The optimal strategy for that team depends only on the $\left\lbrace f_i\right\rbrace$ of every other team. If this team switches to strategy $j$, then the fraction of teams using eacch strategy changes like
+Now let's look at that simulation in a different way. The number of teams is essentially irrelevant; we are after the probability distribution on the set of all possible strategies. When we select a team at random, that team is using strategy $i$ with probability $f_i$, the total fraction of teams using strategy $i$. The optimal strategy for that team depends only on the $\left\lbrace f_i\right\rbrace$ of every other team. If this team switches to strategy $j$, then the fraction of teams using each strategy changes like
 
 $$f_i\rightarrow f_i-\frac{1}{N},   f_j\rightarrow f_j+\frac{1}{N}$$
 
@@ -119,4 +138,7 @@ so $N$ becomes a parameter that controls the size of the perturbations to each $
 As we computed directly, the distribution $\left\lbrace f_i\right\rbrace$ contains two-container strategies, but it appears to not contain any three-container strategies (it is OK to pick a second container, but not a third). The probability condenses onto the 210 one- and two-container strategies. Only about 10% of teams end up selecting two containers. Because this was an involved enoungh simulation, I ended up picking the two-container strategy with highest probability in the Nash equilibrium, expecting it not to be overselected by others. This involved selecting the suitcases with 73,000 and 79,000 seashells in them. This ultimately led to a payoff of 65,801 seashells, which is higher than the expected value over one-container strategies. Both of the selected containers ended up being worth more than 50,000 seashells.
 
 # Round 5: reading comprehension
-Round 5
+
+In this challenge, you were tasked with reading the magazine "Goldberg" (a parody of Bloomberg) and picking some set of commodities to buy or sell in certain amounts. Essentially, there is a set of news blurbs (e.g. cactus rail spikes are responsible for a train accident) and we are tasked with buying or selling some amount of cactus rail spikes. If you are not diversified in your buying and selling, you are hit with substantial fees: I found that when % or a commodity is bought/sold the profit is $10,000*%$ while the fee is $120*%^2$. I ended up reading the news articles, classifying whether the news was "good" or "bad" (corresponding to "buy" and "sell"), and quantifying my certainty in the situation given the news (some news was more certain than others; some information hinted merely at "rumors").
+
+The major thing that I missed was that we were trading the actual objects, rather than stock in the object. For instance, the commodity "Red Flags" caused a bull stampede, which destroyed most of the Red Flags. I thought I was trading stock in Red Flags (which likely would have gone down), rather than the Red Flags themselves. The supply of Red Flags went down, which drove their prices up. This caused me to switch some of the "buy" and "sell" which led to losses in this manual round. Very few numbers were given here, so things were not very quantitative anyway.
