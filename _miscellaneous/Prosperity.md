@@ -29,7 +29,7 @@ Because the maximum number of trades allowed is so small, we can directly check 
 
 A legal trade sequence is a string of at most 6 digits that starts and ends with 3; for instance, 31023 is a legal sequence of trades, and we can use the table to compute the return by taking the product of the appropriate sequence of elements in the table. The starting and ending digit contain no information, so we can drop them. A legal trade of length N is then represented by a string of length N-1.
 
-We can further reduce the computational time by noting that trading a currency for itself is 1-1, and so strings that contain the same number multiple times in a row are equivalent to a trade of shorter length; for instance, the returns of 0122 and 012 are identical.
+We can further reduce the computational time by noting that trading a currency for itself is 1-1, and so strings that contain the same number multiple times in a row are equivalent to a trade of shorter length; for instance, the returns of 0122 and 012 are identical. The fact that we start and end with seashells means that none of our unique string should begin or end with 3.
 
 I implement this trading procedure in Python by enumerating all distinct trades and then computing their returns. There are 3 strategies of length 2, 6 strategies of length 3, 21 strategies of length 4, and 60 strategies of length 5. In principle, a shorter strategy could be optimal, so all need to be checked. But it turns out that the optimal strategy is 0210, corresponding to the following trade sequence:
 
