@@ -6,7 +6,7 @@ permalink: /miscellaneous/imc-prosperity-3
 ---
 
 ## Overview
-*Prosperity* is a $15$-day trading challenge hosted by IMC Trading, a trading firm. The $15$-day challenge is separated into $5$ rounds, each of which lasts $72$ hours. Within each round, teams compete in a pair of challenges – an *algorithmic* challenge, which involves noticing trends in markets and writing Python code to automate buying and selling of certain commodities, and a *manual* challenge, which involves submitting a single answer to a trading-based question. I focused on solving the manual challenges. My thought process and the outcomes are detailed throughout this page.
+*Prosperity* is a 15-day trading challenge hosted by IMC Trading, a trading firm. The 15-day challenge is separated into 5 rounds, each of which lasts 72 hours. Within each round, teams compete in a pair of challenges – an *algorithmic* challenge, which involves noticing trends in markets and writing Python code to automate buying and selling of certain commodities, and a *manual* challenge, which involves submitting a single answer to a trading-based question. I focused on solving the manual challenges. My thought process and the outcomes are detailed throughout this page.
 
 # Round 1: Currency exchange
 In round 1, we were given the following table of currencies to trade, along with their corresponding exchange rates:
@@ -26,26 +26,26 @@ Because the maximum number of trades allowed is so small, we can directly check 
 
 $$0 = \textrm{     Snowballs,     } 1 = \textrm{     Pizza,     } 2 = \textrm{     Silicon Nuggets, and     } 3 = \textrm{     Seashells.}$$
 
-A legal trade sequence is a string of at most $`6`$ digits that starts and ends with $`3`$; for instance, $`31023`$ is a legal sequence of trades, and we can use the table to compute the return by taking the product of the appropriate sequence of elements in the table. The starting and ending digit contain no information, so we can drop them. A legal trade of length $`N`$ is then represented by a string of length $`N-1`$.
+A legal trade sequence is a string of at most 6 digits that starts and ends with 3; for instance, 31023 is a legal sequence of trades, and we can use the table to compute the return by taking the product of the appropriate sequence of elements in the table. The starting and ending digit contain no information, so we can drop them. A legal trade of length N is then represented by a string of length N-1.
 
-We can further reduce the computational time by noting that trading a currency for itself is $`1-1`$, and so a trade that contains the same number multiple times in a row is equivalent to a trade of shorter length; for instance, the returns of $`0122`$ and $`012`$ are identical. The fact that we start and end with seashells means that none of our unique strings should begin or end with $`3`$.
+We can further reduce the computational time by noting that trading a currency for itself is 1-1, and so a trade that contains the same number multiple times in a row is equivalent to a trade of shorter length; for instance, the returns of 0122 and 012 are identical. The fact that we start and end with seashells means that none of our unique strings should begin or end with 3.
 
-I implement this trading procedure in Python by first enumerating all distinct trades and then computing their returns. There are $`3`$ strategies of length $`2`$ (can you see what they are?), $`6`$ strategies of length $`3`$ (this is also quick to check), $`21`$ strategies of length $`4`$, and $`60`$ strategies of length $`5`$. In principle, a shorter strategy could be optimal, so all need to be checked. But it turns out that the optimal strategy is $`0210`$, corresponding to the following trade sequence:
+I implement this trading procedure in Python by first enumerating all distinct trades and then computing their returns. There are 3 strategies of length 2 (can you see what they are?), 6 strategies of length 3 (this is also quick to check), 21 strategies of length 4, and 60 strategies of length 5. In principle, a shorter strategy could be optimal, so all need to be checked. But it turns out that the optimal strategy is 0210, corresponding to the following trade sequence:
 
-$$\textrm{Seashells &#8594; Snowballs &#8594; Silicon Nuggets &#8594; Pizza &#8594; Snowballs &#8594; Seashells.}$$
+$$\textrm{     Seashells     } \rightarrow \textrm{     Snowballs     } \rightarrow \textrm{     Silicon Nuggets     } \rightarrow \textrm{     Pizza     } \rightarrow \textrm{     Snowballs     } \rightarrow \textrm{     Seashells.}$$
 
-This sequence multiplies your starting currency by $`1.08868032`$. Many other participating teams also found this optimal trade, leading to a ~$`1000`$-way tie in the manual round 1.
+This sequence multiplies your starting currency by 1.08868032. Many other participating teams also found this optimal trade, leading to a ~1000-way tie in the manual round 1.
 
 # Round 2: Competitive container picking
-In this round, $`10`$ containers are presented. Each container has a different amount of seashells inside of it $`c_i`$. When we select a box, we share its contents with some number of *individuals* $`n_i`$ (also printed on the box) and also with the percentage of teams that select the same box as we do. To be precise, the payout $`w_i`$ from selecting box $`i`$ with $`c_i`$ seashells and $`n_i`$ individuals when a fraction $`f_i`$ of the total number of teams also select that box is
+In this round, 10 containers are presented. Each container has a different amount of seashells inside of it $c_i$. When we select a box, we share its contents with some number of *individuals* $n_i$ (also printed on the box) and also with the percentage of teams that select the same box as we do. To be precise, the payout $w_i$ from selecting box $i$ with $c_i$ seashells and $n_i$ individuals when a fraction $f_i$ of the total number of teams also select that box is
 
 $$w_i = \frac{c_i}{n_i+100*f_i}.$$
 
-As a twist, we (and everyone else) also have the option to select a second box, for the "low" price of $`50,000`$ seashells (roughly the amount that was won in the entire first manual round).
+As a twist, we (and everyone else) also have the option to select a second box, for the "low" price of 50,000 seashells (roughly the amount that was won in the entire first manual round).
 
 To study the structure of this problem, it is useful to find the *Nash equilibrium*, which is a set of strategies for each team whereupon, given everyone else's strategy remains fixed, you can do no better by changing your strategy. The strategy in complicated games is usually a *mixed* one, meaning that each team finds that using a probability distribution supported over different selections of boxes is optimal (rather than simply picking a particular box).
 
-We can start by studying a simplified game, where we are only allowed to pick one of the boxes (it will turn out that this is sufficient to find the Nash equilibrium). Then a *strategy* for a particular team is a set $`\left\lbrace p_i\right\rbrace`$ of probabilities for picking each box. The expected return of this strategy, given that every other team's own strategy is fixed, is a weighted sum of the returns from each box:
+We can start by studying a simplified game, where we are only allowed to pick one of the boxes (it will turn out that this is sufficient to find the Nash equilibrium). Then a *strategy* for a particular team is a set $\left\lbrace p_i\right\rbrace$ of probabilities for picking each box. The expected return of this strategy, given that every other team's own strategy is fixed, is a weighted sum of the returns from each box:
 
 $$\left\langle w\right\rangle=\sum_i\frac{p_i c_i}{n_i+100*f_i}.$$
 
@@ -65,7 +65,7 @@ Taking the derivative of $\mathcal{L}$ with respect to an arbitrary $`p_j`$, we 
 
 $$\frac{c_j}{n_j+100*f_j}=\lambda$$
 
-This gives us an interpretation of $`\lambda`$: it is the expected return from picking any one of the boxes. The Nash equilibrium is hence achieved when all of the boxes have identical expected value. This can be used to find an equilibrium strategy $`\left\lbrace p_i\right\rbrace`$ by letting $`f_i=p_i`$. Now for some concrete numbers: the containers contain the following amounts:
+This gives us an interpretation of $\lambda$: it is the expected return from picking any one of the boxes. The Nash equilibrium is hence achieved when all of the boxes have identical expected value. This can be used to find an equilibrium strategy $`\left\lbrace p_i\right\rbrace`$ by letting $f_i=p_i$. Now for some concrete numbers: the containers contain the following amounts:
 
 $$c_i=10,000*\left\lbrace 10, 80, 37, 17, 90, 31, 50, 20, 73, 89 \right\rbrace.$$
 
