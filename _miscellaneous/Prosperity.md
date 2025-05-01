@@ -113,7 +113,11 @@ $$p(b_2,b_{avg})=\begin{cases}
     \left(\frac{320-b_{avg}}{320-b_2}\right)^3 & b_2<b_{avg} 
     \end{cases}$$
 
-which heavily suppresses how many turtles will trade with you if you bid below the average second bid. We can first plot the optimal second bid as a function of the average second bid:
+which heavily suppresses how many turtles will trade with you if you bid below the average second bid. Naturally, your return in this round now depends upon the value of the average second bid:
+
+$$r_2(b_2,b_{avg})=\left(320-b_2\right)p(b_2,b_{avg})\int_{160}^{b_2}\textrm{d}x\textrm{ }\rho(x).$$
+
+We can first plot the optimal second bid as a function of the average second bid by extremizing the above function with respect to $b_2$ at each $b_{avg}$:
 
 
 
