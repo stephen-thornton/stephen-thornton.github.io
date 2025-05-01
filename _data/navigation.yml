@@ -3,11 +3,8 @@ main:
   - title: "Home"
     url: /
 
-#  - title: "Talks"
-#    url: /talks/    
-
   - title: "Teaching"
     url: /teaching/
-    
+
   - title: "Miscellaneous"
     url: /miscellaneous/
