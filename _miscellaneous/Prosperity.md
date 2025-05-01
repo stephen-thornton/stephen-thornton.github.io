@@ -6,7 +6,7 @@ permalink: /miscellaneous/imc-prosperity-3
 ---
 
 ## Overview
-*Prosperity* is a \\( 15 \\)-day trading challenge hosted by IMC Trading, a trading firm. The 15-day challenge is separated into 5 rounds, each of which lasts 72 hours. Within each round, teams compete in a pair of challenges – an *algorithmic* challenge, which involves noticing trends in markets and writing Python code to automate buying and selling of certain commodities, and a *manual* challenge, which involves submitting a single answer to a trading-based question. I focused on solving the manual challenges. My thought process and the outcomes are detailed throughout this page.
+*Prosperity* is a \\( 15 \\)-day trading challenge hosted by IMC Trading, a trading firm. The \\( 15 \\)-day challenge is separated into \\( 5 \\) rounds, each of which lasts \\( 72 \\) hours. Within each round, teams compete in a pair of challenges – an *algorithmic* challenge, which involves noticing trends in markets and writing Python code to automate buying and selling of certain commodities, and a *manual* challenge, which involves submitting a single answer to a trading-based question. I focused on solving the manual challenges. My thought process and the outcomes are detailed throughout this page.
 
 # Round 1: Currency exchange
 In round 1, we were given the following table of currencies to trade, along with their corresponding exchange rates:
@@ -20,21 +20,21 @@ In round 1, we were given the following table of currencies to trade, along with
 | Seashells       |   1.34      |  1.98   |        0.64       |    1.00     |
 
 
-where the row label is the item you have and the column label is the item you are converting your currency into. Our goal is to maximize our funds by performing a sequence of trades. We are constrained to start with seashells (the currency on our island) and end with seashells, and we are also constrained to make at most 5 trades.
+where the row label is the item you have and the column label is the item you are converting your currency into. Our goal is to maximize our funds by performing a sequence of trades. We are constrained to start with seashells (the currency on our island) and end with seashells, and we are also constrained to make at most \\( 5 \\) trades.
 
 Because the maximum number of trades allowed is so small, we can directly check the outcome of all legal sequences of trades and choose the sequence that gives us the largest return. We begin by indexing the elements of our table: 
 
 $$0 = \textrm{     Snowballs,     } 1 = \textrm{     Pizza,     } 2 = \textrm{     Silicon Nuggets, and     } 3 = \textrm{     Seashells.}$$
 
-A legal trade sequence is a string of at most 6 digits that starts and ends with 3; for instance, 31023 is a legal sequence of trades, and we can use the table to compute the return by taking the product of the appropriate sequence of elements in the table. The starting and ending digit contain no information, so we can drop them. A legal trade of length N is then represented by a string of length N-1.
+A legal trade sequence is a string of at most \\( 6 \\) digits that starts and ends with \\( 3 \\); for instance, \\( 31023 \\) is a legal sequence of trades, and we can use the table to compute the return by taking the product of the appropriate sequence of elements in the table. The starting and ending digit contain no information, so we can drop them. A legal trade of length \\( N \\) is then represented by a string of length \\( N-1 \\).
 
-We can further reduce the computational time by noting that trading a currency for itself is 1-1, and so a trade that contains the same number multiple times in a row is equivalent to a trade of shorter length; for instance, the returns of 0122 and 012 are identical. The fact that we start and end with seashells means that none of our unique strings should begin or end with 3.
+We can further reduce the computational time by noting that trading a currency for itself is \\( 1-1 \\), and so a trade that contains the same number multiple times in a row is equivalent to a trade of shorter length; for instance, the returns of \\( 0122 \\) and \\( 012 \\) are identical. The fact that we start and end with seashells means that none of our unique strings should begin or end with \\( 3 \\).
 
-I implement this trading procedure in Python by first enumerating all distinct trades and then computing their returns. There are 3 strategies of length 2 (can you see what they are?), 6 strategies of length 3 (this is also quick to check), 21 strategies of length 4, and 60 strategies of length 5. In principle, a shorter strategy could be optimal, so all need to be checked. But it turns out that the optimal strategy is 0210, corresponding to the following trade sequence:
+I implement this trading procedure in Python by first enumerating all distinct trades and then computing their returns. There are \\( 3 \\) strategies of length \\( 2 \\) (can you see what they are?), \\( 6 \\) strategies of length \\( 3 \\) (this is also quick to check), \\( 21 \\) strategies of length \\( 4 \\), and \\( 60 \\) strategies of length \\( 5 \\). In principle, a shorter strategy could be optimal, so all need to be checked. But it turns out that the optimal strategy is \\( 0210 \\), corresponding to the following trade sequence:
 
 $$\textrm{     Seashells     } \rightarrow \textrm{     Snowballs     } \rightarrow \textrm{     Silicon Nuggets     } \rightarrow \textrm{     Pizza     } \rightarrow \textrm{     Snowballs     } \rightarrow \textrm{     Seashells.}$$
 
-This sequence multiplies your starting currency by 1.08868032. Many other participating teams also found this optimal trade, leading to a ~1000-way tie in the manual round 1.
+This sequence multiplies your starting currency by \\( 1.08868032 \\). Many other participating teams also found this optimal trade, leading to a ~\\( 1000 \\)-way tie in the manual round 1.
 
 # Round 2: Competitive container picking
 In this round, 10 containers are presented. Each container has a different amount of seashells inside of it \\( c_i \\). When we select a box, we share its contents with some number of *individuals* \\( n_i \\) (also printed on the box) and also with the percentage of teams that select the same box as we do. To be precise, the payout \\( w_i \\) from selecting box \\( i \\) with \\( c_i \\) seashells and \\( n_i \\) individuals when a fraction \\( f_i \\) of the total number of teams also select that box is
