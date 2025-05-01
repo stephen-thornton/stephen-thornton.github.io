@@ -108,7 +108,10 @@ Our return is \\( 0 \\) if we bid between \\( 200 \\) and \\( 250 \\). Plotting 
 
 It is worth noting the local maximum at \\( 265 \\) as well, which becomes important in the second part of the round. In the second part of this round, the rules are largely the same. However, the turtles are becoming pickier. Even if you bid above the reserve price of a turtle, this turtle will only trade with you with probability
 
-$$p(b_2,b_{avg})=\begin{cases} 1 & b_2\geq b_{avg}, \\ \left(\frac{320-b_{avg}}{320-b_2}\right)^3 & b_2<b_{avg} \end{cases}$$
+$$p(b_2,b_{avg})=\begin{cases}
+    1 & b_2\geq b_{avg}, \\ 
+    \left(\frac{320-b_{avg}}{320-b_2}\right)^3 & b_2<b_{avg} 
+    \end{cases}$$
 
 which heavily suppresses how many turtles will trade with you if you bid below the average second bid. We can first plot the optimal second bid as a function of the average second bid:
 
