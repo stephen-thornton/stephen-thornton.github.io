@@ -88,7 +88,7 @@ $$\lambda=35,248.2$$
 
 Because the Lagrange multiplier $\lambda$ is less than the cost of opening another container (50,000 seashells), the Nash equilibrium is indeed this probability distribution over the set of one-container strategies (this should be contrasted with the Round 4 result).
 
-Now for the question of which container to pick. If we had strong beliefs about which container others would pick (relative to the Nash equilibrium), we could exploit these to do better than the other teams. However, I assume the other teams are playing optimally, and roll a weighted die with the probabilities of the Nash equilibrium strategy. I end up selecting the 9th box. 24.06% of the other teams ended up selecting this box, which is significanlty higher than the expected (from Nash) of ~16.7%. As a result, I only earned 26,015 seashells instead of the expected 35,248.2. However, the result that I should definitely *not* pick a second box was certainly correct.
+Now for the question of which container to pick. If we had strong beliefs about which container others would pick (relative to the Nash equilibrium), we could exploit these to do better than the other teams. However, I assume the other teams are playing optimally and roll a weighted die with the probabilities of the Nash equilibrium strategy. I end up selecting the 9th box. 24.06% of the other teams ended up selecting this box, which is significantly higher than the expected (from Nash) of ~16.7%. As a result, I only earned 26,015 seashells instead of the expected 35,248.2. However, the result that I should definitely *not* pick a second box was certainly correct.
 
 # Round 3: turtle trading
 In this round, there is a "large collection" of turtles that are looking to trade flippers with you. You will set a *bid price*, which is the price you will buy all flippers at. The turtles will sell you their flippers at your bid price as long as it is above their *reserve price*, which can be thought of as the minimal value that each turtle values its flipper. You can then sell the flippers at 320 seashells per flipper. The distribution of reserve prices is 
@@ -110,7 +110,7 @@ Our return is 0 if we bid between 200 and 250. Plotting this gives a maximum of 
 
 
 
-In the second round, the rules are largely the same. However, the turtle are becoming more picky. If you bid above the reserve price of the turtle but *below the average second bid*, the turtle will only trade with you with probability
+In the second round, the rules are largely the same. However, the turtles are becoming pickier. If you bid above the reserve price of the turtle but *below the average second bid*, the turtle will only trade with you with probability
 
 $$p(b_2,b_{avg})=\left(\frac{320-b_{avg}}{320-b_2}\right)^3,$$
 
