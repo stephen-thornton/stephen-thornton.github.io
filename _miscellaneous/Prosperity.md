@@ -11,7 +11,7 @@ location: "Ithaca, NY"
 ## Overview
 *Prosperity* is a 15-day trading challenge hosted by IMC Trading, a trading firm. The 15-day challenge is separated into 5 rounds, each of which lasts 72 hours. Within each round, teams compete in a pair of challenges – an *algorithmic* challenge, which involves noticing trends in markets and writing Python code to automate buying and selling of certain commodities, and a *manual* challenge, which involves submitting a single answer to a trading-based question. I focused on solving the manual challenges. My thought process and the outcomes are detailed throughout this page.
 
-# Round 1: Currency Exchange
+# Round 1: Currency exchange
 In Round 1, we were given the following table of currencies to trade, along with their corresponding exchange rates:
 
 <div align="center">
@@ -41,7 +41,7 @@ seashells->snowballs->silicon nuggets->pizza->snowballs->seashells.
 
 This sequence multiplies your starting currency by 1.08868032. Many other participating teams also found this optimal trade, leading to a ~1000-way tie in the manual Round 1.
 
-# Round 2: competitive container-picking
+# Round 2: Competitive container-picking
 In this round, 10 containers are presented. Each container has a different amount of seashells inside of it $c_i$. When we select a box, we share its contents with some number of *individuals* $n_i$ (also printed on the box) and also some percentage of teams that select the same box as we do. To be precise, the payout $w_i$ from selecting box $i$ with $c_i$ seashells and $n_i$ individuals when a fraction $f_i$ of the total number of teams also select that box is
 
 $$w_i = \frac{c_i}{n_i+100*f_i}.$$
@@ -90,7 +90,7 @@ Because the Lagrange multiplier $\lambda$ is less than the cost of opening anoth
 
 Now for the question of which container to pick. If we had strong beliefs about which container others would pick (relative to the Nash equilibrium), we could exploit these to do better than the other teams. However, I assume the other teams are playing optimally and roll a weighted die with the probabilities of the Nash equilibrium strategy. I end up selecting the 9th box. 24.06% of the other teams ended up selecting this box, which is significantly higher than the expected (from Nash) of ~16.7%. As a result, I only earned 26,015 seashells instead of the expected 35,248.2. However, the result that I should definitely *not* pick a second box was certainly correct.
 
-# Round 3: turtle trading
+# Round 3: Turtle trading
 In this round, there is a "large collection" of turtles that are looking to trade flippers with you. You will set a *bid price*, which is the price you will buy all flippers at. The turtles will sell you their flippers at your bid price as long as it is above their *reserve price*, which can be thought of as the minimal value that each turtle values its flipper. You can then sell the flippers at 320 seashells per flipper. The distribution of reserve prices is 
 
 $$\rho(x) = \frac{1}{110}\left(\right)\Theta\left(\right)$$
@@ -124,7 +124,7 @@ We can also plot the expected returns as a function of the optimal second bid:
 
 The mean return should never be less than 200, since no team will want to bid less than 200 (you will always do strictly worse, no matter what the average second bid is). At an average bid price of $320-10*33^{2/3}=217.117$, the optimal choice switches from bidding 200 to bidding 265. At averages above 265, you always do optimally when you bid the average. I ended up selecting 265 (the highest return for a reasonable range of bid prices), but this ended up hurting me, as the average second bid was way higher at 286. 
 
-# Round 4: competitive suitcase-picking
+# Round 4: Competitive suitcase-picking (round 2 reprise)
 This round ended up being nearly identical to Round 2 in theory, but with more interesting results given the selected numbers. There are now 20 suitcases to choose from, with identical rules for sharing as in Round 2. However, one can choose to select a second suitcase for a cost of 50,000 seashells, and a third suitcase for 100,000 seashells. Starting with the same philosophy as Round 2, we first restrict ourselves to the simpler case of one-suitcase strategies and find the distribution where their expected values are equal. In this case, the Lagrange multiplier is $\lambda = 56,613.8$, meaning that a team can improve its earnings by selecting an additional suitcase. This means that the Nash equilibrium does not contain only one-suitcase strategies, in contrast to Round 2.
 
 If we do the next-simplest thing, and restrict to one- and two-suitcase strategies, we have 210 possible strategies to pick from (20 + 20 choose 2). This means we would need to solve 210 simultaneous equations to find this restricted equilibrium strategy (which means we would need to type them into Python or Mathematica, also). Let's do this in a more creative way, using a stochastic simulation.
@@ -139,7 +139,7 @@ so $N$ becomes a parameter that controls the size of the perturbations to each $
 
 As we computed directly, the distribution $\left\lbrace f_i\right\rbrace$ contains two-container strategies, but it appears to not contain any three-container strategies (it is OK to pick a second container, but not a third). The probability condenses onto the 210 one- and two-container strategies. Only about 10% of teams end up selecting two containers. Because this was an involved enoungh simulation, I ended up picking the two-container strategy with highest probability in the Nash equilibrium, expecting it not to be overselected by others. This involved selecting the suitcases with 73,000 and 79,000 seashells in them. This ultimately led to a payoff of 65,801 seashells, which is higher than the expected value of 50,000 seashells. (A rough argument to see that this is the expected payoff at the Nash equilibrium – both one and two container strategies are contained in the Nash equilibrium. Switching from a one container strategy to a two container strategy must lead to no gain. Hence every individual box, and hence every one- or two-container strategy, must have 50,000 expected value). Both of the selected containers ended up being worth more than 50,000 seashells.
 
-# Round 5: reading comprehension
+# Round 5: Reading comprehension
 
 In this challenge, you were tasked with reading the magazine "Goldberg" (a parody of Bloomberg) and picking some set of commodities to buy or sell in certain amounts. Essentially, there is a set of news blurbs (e.g. cactus rail spikes are responsible for a train accident) and we are tasked with buying or selling some amount of cactus rail spikes. If you are not diversified in your buying and selling, you are hit with substantial fees: I found that when % or a commodity is bought/sold the profit is $10,000*%$ while the fee is $120*%^2$. I ended up reading the news articles, classifying whether the news was "good" or "bad" (corresponding to "buy" and "sell"), and quantifying my certainty in the situation given the news (some news was more certain than others; some information hinted merely at "rumors").
 
