@@ -2,7 +2,7 @@
 title: "IMC Prosperity 3 - 2025"
 collection: miscellaneous
 type: "Financial trading challenge"
-permalink: /teaching/imc-prosperity-3
+permalink: /misc/imc-prosperity-3
 venue: "International"
 date: 2025-04-01
 location: "Ithaca, NY"
