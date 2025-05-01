@@ -100,7 +100,7 @@ We are told the following fact, which I think many teams misinterpreted: "The di
 
 Conclusion: exactly ZERO turtles will trade with you if you place a bid between $`200`$ and $`250`$. This won't change many of my conclusions, but it does explain some peculiarities in the graphs I will show.
 
-In the first part of this round, this is all of the information we have. We can compute our expected return per flipper (I assume each of the large number of turtles has one flipper to trade). Suppose our bid price is $`b_i`$. Then, so long as we don't bid between $`200`$ and $`250`$, our expected return per flipper is the difference between our sale and purchase price, multiplied by the expected fraction of turtles that trade with us:
+In the first part of this round, this is all of the information we have. We can compute our expected return per flipper (I assume each of the large number of turtles has one flipper to trade). Suppose our bid price is $`b_1`$. Then, so long as we don't bid between $`200`$ and $`250`$, our expected return per flipper is the difference between our sale and purchase price, multiplied by the expected fraction of turtles that trade with us:
 
 $$r_1(b_1)=\left(320-b_1\right)\int_{160}^{b_1}\textrm{d}x\textrm{ }\rho(x).$$
 
