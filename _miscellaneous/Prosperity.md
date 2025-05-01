@@ -117,7 +117,7 @@ which heavily suppresses how many turtles will trade with you if you bid below t
 
 $$r_2(b_2,b_{avg})=\left(320-b_2\right)p(b_2,b_{avg})\int_{160}^{b_2}\textrm{d}x\textrm{ }\rho(x).$$
 
-We can first plot the optimal second bid as a function of the average second bid by extremizing the above function with respect to $b_2$ at each $b_{avg}$:
+We can first plot the optimal second bid as a function of the average second bid by maximizing the above function with respect to $b_2$ at each $b_{avg}$:
 
 
 
@@ -125,7 +125,7 @@ We can also plot the expected returns as a function of the optimal second bid:
 
 
 
-The mean second bid should never be less than \\( 200 \\), since no team will want to bid less than \\( 200 \\) (you will always do strictly worse, no matter what the average second bid is, if you do this). At an average bid price of \\( 320-10*33^{2/3}=217.117 \\), the optimal choice switches from bidding \\( 200 \\) to bidding \\( 265 \\). At averages above \\( 265 \\), you always do optimally when you bid the average. I ended up selecting \\( 265 \\) (the highest return for a reasonable range of average bid prices), but this ended up hurting me, as the average second bid was way higher at \\( 286 \\).
+The mean second bid should never be less than \\( 200 \\), since no team will want to bid less than \\( 200 \\) (you will always do strictly worse than picking \\( 200 \\), no matter what the average second bid is, if you do this). At an average bid price of \\( 320-10*33^{2/3}=217.117 \\), the optimal choice jumps from bidding \\( 200 \\) to bidding \\( 265 \\); this is the point where the returns at the original maximum of \\( 200 \\) in the first part of this round are suppressed below the returns at the local maximum located at \\( 265 \\). At averages above \\( 265 \\), you always do optimally when you bid the average. I ended up selecting \\( 265 \\) (the highest return for a reasonable range of average bid prices), but this ended up hurting me, as the average second bid was way higher at \\( 286 \\).
 
 # Round 4: Competitive suitcase picking (round 2 reprise)
 This round ended up being nearly identical to round 2 in theory, but with more interesting results given the selected numbers. There are now \\( 20 \\) suitcases to choose from, with identical rules for sharing as in round 2. However, one can choose to select a second suitcase for a cost of \\( 50,000 \\) seashells, and a third suitcase for an additional \\( 100,000 \\) seashells. Starting with the same philosophy as round 2, we first restrict ourselves to the simpler case of one-suitcase strategies (of which there are only \\( 20 \\)) and find the distribution where their expected values are equal. In this case, the Lagrange multiplier is \\( \lambda = 56,613.8 \\), meaning that a team can improve its earnings by selecting an additional suitcase. This means that the Nash equilibrium does not contain only one-suitcase strategies, in contrast to round 2.
