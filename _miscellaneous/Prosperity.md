@@ -78,7 +78,7 @@ $$n_i=\left\lbrace 1, 6, 3, 1, 10, 2, 4, 2, 4, 8 \right\rbrace.$$
 
 Using Mathematica to solve the $`10`$ independent simultaneous equations (constraint + equality of the $`10`$ expectation values), we find the following equilibrium strategy:
 
-$$p_i=\left\lbrace 0.018, 0.167, 0.075, 0.038, 0.155, 0.068, 0.102, 0.037, 0.167, 0.172 \right\rbrace$$
+$$\left\lbrace p_i\right\rbrace=\left\lbrace 0.018, 0.167, 0.075, 0.038, 0.155, 0.068, 0.102, 0.037, 0.167, 0.172 \right\rbrace$$
 
 and a Lagrange multiplier
 
