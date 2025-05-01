@@ -1,5 +1,5 @@
 ---
-title: "IMC Prosperity 3 - 2025"
+title: "IMC Prosperity 3 (2025)"
 collection: miscellaneous
 type: "Financial trading challenge"
 permalink: /miscellaneous/imc-prosperity-3
