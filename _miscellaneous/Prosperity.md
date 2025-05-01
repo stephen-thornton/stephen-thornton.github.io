@@ -122,9 +122,7 @@ We can also plot the expected returns as a function of the optimal second bid:
 
 
 
-The mean return should never be less than 200, since no team will want to bid less than 200 (you will always do strictly worse, no matter what the average second bid is). At an average bid price of $320-10*33^{2/3}=217.117$, the optimal choice switches from bidding 200 to bidding 265. At averages above 265, you always do optimally when you bid the average. I ended up selecting 265 (the highest return for a reasonable range of bid prices), but this ended up killing me, as the average second bid was way higher at 286.
-
-Why was the average second bid so high? We can compute a Nash equilibrium here as well, to see if we can improve our payout by bidding slightly above the average. 
+The mean return should never be less than 200, since no team will want to bid less than 200 (you will always do strictly worse, no matter what the average second bid is). At an average bid price of $320-10*33^{2/3}=217.117$, the optimal choice switches from bidding 200 to bidding 265. At averages above 265, you always do optimally when you bid the average. I ended up selecting 265 (the highest return for a reasonable range of bid prices), but this ended up hurting me, as the average second bid was way higher at 286. 
 
 # Round 4: competitive suitcase-picking
 This round ended up being nearly identical to Round 2 in theory, but with more interesting results given the selected numbers. There are now 20 suitcases to choose from, with identical rules for sharing as in Round 2. However, one can choose to select a second suitcase for a cost of 50,000 seashells, and a third suitcase for 100,000 seashells. Starting with the same philosophy as Round 2, we first restrict ourselves to the simpler case of one-suitcase strategies and find the distribution where their expected values are equal. In this case, the Lagrange multiplier is $\lambda = 56,613.8$, meaning that a team can improve its earnings by selecting an additional suitcase. This means that the Nash equilibrium does not contain only one-suitcase strategies, in contrast to Round 2.
