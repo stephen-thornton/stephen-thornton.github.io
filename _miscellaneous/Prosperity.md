@@ -93,6 +93,7 @@ $$\rho(x) = \frac{1}{110}\left[160\leq x \leq 200\textrm{   or   }250\leq x \leq
 We are told the following fact, which I think many teams misinterpreted: "The distribution of reserve prices is uniform between \\( 160–200 \\) and \\( 250–320 \\), but none of the Sea Turtles will trade between \\( 200 \\) and \\( 250 \\) due to some ancient superstition." Some teams interpreted the second part of this sentence as an explanation of the strange distribution (why do no turtles have reserve prices between \\( 200 \\) and \\( 250 \\)? Superstition!). However, as it is written, it is implying something more severe: 
 
 1) It specifically says none of the turtles will *trade* between \\( 200 \\) and \\( 250 \\).
+
 2) The turtles *trade* flippers with you at your *bid* price.
 
 Conclusion: exactly ZERO turtles will trade with you if you place a bid between \\( 200 \\) and \\( 250 \\). This won't change many of my conclusions, but it does explain some peculiarities in the graphs I will show.
