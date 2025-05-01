@@ -93,7 +93,7 @@ Now for the question of which container to pick. If we had strong beliefs about 
 # Round 3: Turtle trading
 In this round, there is a "large collection" of turtles that are looking to trade flippers with you. You will set a *bid price*, which is the price you will buy all flippers at. The turtles will sell you their flippers at your bid price as long as it is above their *reserve price*, which can be thought of as the minimal value that each turtle values its flipper. You can then sell the flippers at 320 seashells per flipper. The pdf of reserve prices is 
 
-$$\rho(x) = \frac{1}{110}\Theta\left(160\leq x \leq 200\right\textrm{   or   }250\leq x \leq 320\right).$$
+$$\rho(x) = \frac{1}{110}\Theta\left(160\leq x \leq 200\textrm{   or   }250\leq x \leq 320\right).$$
 
 We are told the following fact, which I think many teams misinterpreted: "The distribution of reserve prices is uniform between 160–200 and 250–320, but none of the Sea Turtles will trade between 200 and 250 due to some ancient superstition." Some teams interpreted the second part of this sentence as an explanation of the strange distribution (why do no turtles have reserve prices between 200 and 250? Superstition!). However, as it is written, it is implying something more severe: 
 
