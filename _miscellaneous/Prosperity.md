@@ -14,7 +14,6 @@ location: "Ithaca, NY"
 # Round 1: Currency exchange
 In round 1, we were given the following table of currencies to trade, along with their corresponding exchange rates:
 
-<div align="center">
   
 |                 |  Snowballs  |  Pizza  |  Silicon Nuggets  |  Seashells  |
 |-----------------|-------------|---------|-------------------|-------------|
@@ -23,7 +22,6 @@ In round 1, we were given the following table of currencies to trade, along with
 | Silicon Nuggets |   1.95      |  3.10   |        1.00       |    1.49     |
 | Seashells       |   1.34      |  1.98   |        0.64       |    1.00     |
 
-</div>
 
 where the row label is the item you have and the column label is the item you are converting your currency into. Our goal is to maximize our funds by performing a sequence of trades. We are constrained to start with seashells (the currency on our island) and end with seashells, and we are also constrained to make at most 5 trades.
 
