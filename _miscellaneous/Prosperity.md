@@ -104,7 +104,7 @@ $$r_1(b_1)=\left(320-b_1\right)\int_{160}^{b_1}\textrm{d}x\textrm{ }\rho(x).$$
 
 Our return is \\( 0 \\) if we bid between \\( 200 \\) and \\( 250 \\). Plotting this gives a maximum of \\( 480/11 \\) seashells per flipper at a first bid price of \\( b_1=200 \\):
 
-
+<img src="/images/Round3Returns.png" width="700"/>
 
 It is worth noting the local maximum at \\( 265 \\) as well, which becomes important in the second part of the round. In the second part of this round, the rules are largely the same. However, the turtles are becoming pickier. Even if you bid above the reserve price of a turtle, this turtle will only trade with you with probability
 
@@ -119,11 +119,11 @@ $$r_2(b_2,b_{avg})=\left(320-b_2\right)p(b_2,b_{avg})\int_{160}^{b_2}\textrm{d}x
 
 We can first plot the optimal second bid as a function of the average second bid by maximizing the above function with respect to \\( b_2 \\) at each \\( b_{avg} \\):
 
-
+<img src="/images/Round3BestBids.png" width="700"/>
 
 We can also plot the expected returns as a function of the optimal second bid:
 
-
+<img src="/images/Round3BestReturns.png" width="700"/>
 
 The mean second bid should never be less than \\( 200 \\), since no team will want to bid less than \\( 200 \\) (you will always do strictly worse than picking \\( 200 \\), no matter what the average second bid is, if you do this). At an average bid price of \\( 320-10*33^{2/3}=217.117 \\), the optimal choice jumps from bidding \\( 200 \\) to bidding \\( 265 \\); this is the point where the returns at the original maximum of \\( 200 \\) in the first part of this round are suppressed below the returns at the local maximum located at \\( 265 \\). At averages above \\( 265 \\), you always do optimally when you bid the average. I ended up selecting \\( 265 \\) (the highest return for a reasonable range of average bid prices), but this ended up hurting me, as the average second bid was way higher at \\( 286 \\).
 
