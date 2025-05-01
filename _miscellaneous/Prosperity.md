@@ -41,7 +41,7 @@ seashells->snowballs->silicon nuggets->pizza->snowballs->seashells.
 
 This sequence multiplies your starting currency by 1.08868032. Many other participating teams also found this optimal trade, leading to a ~1000-way tie in the manual Round 1.
 
-# Round 2: Competitive container-picking
+# Round 2: Competitive container picking
 In this round, 10 containers are presented. Each container has a different amount of seashells inside of it $c_i$. When we select a box, we share its contents with some number of *individuals* $n_i$ (also printed on the box) and also some percentage of teams that select the same box as we do. To be precise, the payout $w_i$ from selecting box $i$ with $c_i$ seashells and $n_i$ individuals when a fraction $f_i$ of the total number of teams also select that box is
 
 $$w_i = \frac{c_i}{n_i+100*f_i}.$$
@@ -91,9 +91,9 @@ Because the Lagrange multiplier $\lambda$ is less than the cost of opening anoth
 Now for the question of which container to pick. If we had strong beliefs about which container others would pick (relative to the Nash equilibrium), we could exploit these to do better than the other teams. However, I assume the other teams are playing optimally and roll a weighted die with the probabilities of the Nash equilibrium strategy. I end up selecting the 9th box. 24.06% of the other teams ended up selecting this box, which is significantly higher than the expected (from Nash) of ~16.7%. As a result, I only earned 26,015 seashells instead of the expected 35,248.2. However, the result that I should definitely *not* pick a second box was certainly correct.
 
 # Round 3: Turtle trading
-In this round, there is a "large collection" of turtles that are looking to trade flippers with you. You will set a *bid price*, which is the price you will buy all flippers at. The turtles will sell you their flippers at your bid price as long as it is above their *reserve price*, which can be thought of as the minimal value that each turtle values its flipper. You can then sell the flippers at 320 seashells per flipper. The distribution of reserve prices is 
+In this round, there is a "large collection" of turtles that are looking to trade flippers with you. You will set a *bid price*, which is the price you will buy all flippers at. The turtles will sell you their flippers at your bid price as long as it is above their *reserve price*, which can be thought of as the minimal value that each turtle values its flipper. You can then sell the flippers at 320 seashells per flipper. The pdf of reserve prices is 
 
-$$\rho(x) = \frac{1}{110}\left(\right)\Theta\left(\right)$$
+$$\rho(x) = \frac{1}{110}\Theta\left(160\leq x \leq 200\right\textrm{   or   }250\leq x \leq 320).$$
 
 We are told the following fact, which I think many teams misinterpreted: "The distribution of reserve prices is uniform between 160–200 and 250–320, but none of the Sea Turtles will trade between 200 and 250 due to some ancient superstition." Some teams interpreted the second part of this sentence as an explanation of the strange distribution (why do no turtles have reserve prices between 200 and 250? Superstition!). However, as it is written, it is implying something more severe: 
 
@@ -124,7 +124,7 @@ We can also plot the expected returns as a function of the optimal second bid:
 
 The mean return should never be less than 200, since no team will want to bid less than 200 (you will always do strictly worse, no matter what the average second bid is). At an average bid price of $320-10*33^{2/3}=217.117$, the optimal choice switches from bidding 200 to bidding 265. At averages above 265, you always do optimally when you bid the average. I ended up selecting 265 (the highest return for a reasonable range of bid prices), but this ended up hurting me, as the average second bid was way higher at 286. 
 
-# Round 4: Competitive suitcase-picking (round 2 reprise)
+# Round 4: Competitive suitcase picking (round 2 reprise)
 This round ended up being nearly identical to Round 2 in theory, but with more interesting results given the selected numbers. There are now 20 suitcases to choose from, with identical rules for sharing as in Round 2. However, one can choose to select a second suitcase for a cost of 50,000 seashells, and a third suitcase for 100,000 seashells. Starting with the same philosophy as Round 2, we first restrict ourselves to the simpler case of one-suitcase strategies and find the distribution where their expected values are equal. In this case, the Lagrange multiplier is $\lambda = 56,613.8$, meaning that a team can improve its earnings by selecting an additional suitcase. This means that the Nash equilibrium does not contain only one-suitcase strategies, in contrast to Round 2.
 
 If we do the next-simplest thing, and restrict to one- and two-suitcase strategies, we have 210 possible strategies to pick from (20 + 20 choose 2). This means we would need to solve 210 simultaneous equations to find this restricted equilibrium strategy (which means we would need to type them into Python or Mathematica, also). Let's do this in a more creative way, using a stochastic simulation.
