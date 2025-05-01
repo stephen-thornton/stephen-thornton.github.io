@@ -117,7 +117,7 @@ which heavily suppresses how many turtles will trade with you if you bid below t
 
 $$r_2(b_2,b_{avg})=\left(320-b_2\right)p(b_2,b_{avg})\int_{160}^{b_2}\textrm{d}x\textrm{ }\rho(x).$$
 
-We can first plot the optimal second bid as a function of the average second bid by maximizing the above function with respect to $b_2$ at each $b_{avg}$:
+We can first plot the optimal second bid as a function of the average second bid by maximizing the above function with respect to \\( b_2 \\) at each \\( b_{avg} \\):
 
 
 
