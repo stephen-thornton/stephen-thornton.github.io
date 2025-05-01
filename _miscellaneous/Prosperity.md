@@ -37,7 +37,7 @@ $$\textrm{     Seashells     } \rightarrow \textrm{     Snowballs     } \rightar
 This sequence multiplies your starting currency by \\( 1.08868032 \\). Many other participating teams also found this optimal trade, leading to a ~\\( 1000 \\)-way tie in the manual round 1.
 
 # Round 2: Competitive container picking
-In this round, 10 containers are presented. Each container has a different amount of seashells inside of it \\( c_i \\). When we select a box, we share its contents with some number of *individuals* \\( n_i \\) (also printed on the box) and also with the percentage of teams that select the same box as we do. To be precise, the payout \\( w_i \\) from selecting box \\( i \\) with \\( c_i \\) seashells and \\( n_i \\) individuals when a fraction \\( f_i \\) of the total number of teams also select that box is
+In this round, \\( 10 \\) containers are presented. Each container has a different amount of seashells inside of it \\( c_i \\). When we select a box, we share its contents with some number of *individuals* \\( n_i \\) (also printed on the box) and also with the percentage of teams that select the same box as we do. To be precise, the payout \\( w_i \\) from selecting box \\( i \\) with \\( c_i \\) seashells and \\( n_i \\) individuals when a fraction \\( f_i \\) of the total number of teams also select that box is
 
 $$w_i = \frac{c_i}{n_i+100*f_i}.$$
 
