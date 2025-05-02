@@ -144,7 +144,19 @@ so \\( N \\) becomes a parameter that controls the size of the perturbations to 
 <iframe width="700" height="700" src="/images/0501NashConvergenceN100000.mp4" frameborder="0" allowfullscreen></iframe>
 
 
-As we computed directly, the steady-state distribution \\( \left\lbrace f_i\right\rbrace \\) contains two-container strategies. \\( 25\% \\) of teams end up selecting two containers, and none select three. Because this was an involved enough simulation, I ended up picking one of the two-container strategies with highest probability in the Nash equilibrium, expecting it not to be overselected by others (I picked the one that occurred with third-highest probability, but all of them were close, hovering in the ~\\( 0.4 \\)\\( \% \\) range). This involved selecting the suitcases with \\( 73,000 \\) and \\( 79,000 \\) seashells in them. This ultimately led to a payoff of \\( 65,801 \\) seashells, which is higher than the expected value of \\( 50,000 \\) seashells. (An argument to see that this is the expected payoff at the Nash equilibrium: both one- and two-container strategies are contained in the Nash equilibrium. Switching from a one-container strategy to a two-container strategy must lead to no gain. Hence every individual box, and hence every one- or two-container strategy, must have \\( 50,000 \\) expected value. This also shows why three-container strategies cannot be included.). Both of the containers that I selected ended up being worth more than \\( 50,000 \\) seashells.
+As we computed directly, the steady-state distribution \\( \left\lbrace f_i\right\rbrace \\) contains two-container strategies. \\( 25\% \\) of teams end up selecting two containers, and none select three. Because this was an involved enough simulation, I ended up picking one of the two-container strategies with highest probability in the Nash equilibrium, expecting it not to be overselected by others (I picked the one that occurred with third-highest probability, but all of them were close, hovering in the ~\\( 0.4 \\)\\( \% \\) range). This involved selecting the suitcases with \\( 73,000 \\) and \\( 79,000 \\) seashells in them. This ultimately led to a payoff of \\( 65,801 \\) seashells, which is higher than the expected value of \\( 50,000 \\) seashells. Both of the containers that I selected ended up being worth more than \\( 50,000 \\) seashells.
+
+With the benefit of hindsight, we can make some exact statements about this problem. An argument to see that \\( 50,000 \\) seashells is the expected payoff at the Nash equilibrium: suppose both one- and two-container strategies are contained in the Nash equilibrium. Switching from one of these one-container strategies to a two-container strategy also in the Nash equilibrium must lead to no change in the expected payoff. Hence every box that is included in the one-container strategies of the Nash equilibrium must have \\( 50,000 \\) expected value. This also shows that three-container strategies cannot be included, since choosing a third box costs double its expected value.
+
+Why do exactly \\( 25\% \\) of teams end up picking two boxes? This has to do with the specific numbers that are given for the contents of the boxes and number of individuals. Call \\( g_i \\) the fraction of teams that select box \\( i \\). Because each individual box must have an expected value of \\( 50,000 \\) seashells by the arguments above, we have
+
+$$\frac{c_i}{n_i+100g_i}=50,000 \implies g_i = \frac{500}{c_i}-\frac{n_i}{100}.$$
+
+The sum of all of the \\( g_i \\) need not equal \\( 1 \\), since some teams pick multiple containers. It is, however, equal to \\( 1 + p_2 \\), where \\( p_2 \\) is the probability that a team will select two containers. Inserting the given numbers gives
+
+$$p_2 = \sum_i\left(\frac{500}{c_i}-\frac{n_i}{100}\right) = 0.25,$$
+
+as confirmed by the simulation.
 
 # Round 5: Reading comprehension
 
