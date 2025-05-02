@@ -90,13 +90,13 @@ In this round, there is a "large collection" of turtles that are looking to trad
 
 $$\rho(x) = \frac{1}{110}\left[160\leq x \leq 200\textrm{   or   }250\leq x \leq 320\right].$$
 
-We are told the following fact, which I think many teams misinterpreted: "The distribution of reserve prices is uniform between \\( 160–200 \\) and \\( 250–320 \\), but none of the Sea Turtles will trade between \\( 200 \\) and \\( 250 \\) due to some ancient superstition." Some teams interpreted the second part of this sentence as an explanation of the strange distribution (why do no turtles have reserve prices between \\( 200 \\) and \\( 250 \\)? Superstition!). However, as it is written, it is implying something more severe: 
+We are told the following fact: "The distribution of reserve prices is uniform between \\( 160–200 \\) and \\( 250–320 \\), but none of the Sea Turtles will trade between \\( 200 \\) and \\( 250 \\) due to some ancient superstition." Some teams interpreted the second part of this sentence as an explanation of the strange distribution (why do no turtles have reserve prices between \\( 200 \\) and \\( 250 \\)? Superstition!). However, as it is written, it is implying something more severe: 
 
 1) It specifically says none of the turtles will *trade* between \\( 200 \\) and \\( 250 \\).
 
 2) The turtles *trade* flippers with you at your *bid* price.
 
-Conclusion: exactly ZERO turtles will trade with you if you place a bid between \\( 200 \\) and \\( 250 \\). This won't change many of my conclusions, but it does explain some peculiarities in the graphs I will show.
+This should mean that no turtles will trade with you if you place a bid between \\( 200 \\) and \\( 250 \\). This won't change many of my conclusions, but it does explain some peculiarities in the graphs I will show.
 
 In the first part of this round, this is all of the information we have. We can compute our expected return per flipper (I assume each of the large number of turtles has one flipper to trade). Suppose our bid price is \\( b_1 \\). Then, so long as we don't bid between \\( 200 \\) and \\( 250 \\), our expected return per flipper is the difference between our sale and purchase price, multiplied by the expected fraction of turtles that trade with us:
 
@@ -126,6 +126,8 @@ We can also plot the expected returns as a function of the optimal second bid:
 <img src="/images/Round3BestReturns.png" width="700"/>
 
 The mean second bid should never be less than \\( 200 \\), since no team will want to bid less than \\( 200 \\) (you will always do strictly worse than picking \\( 200 \\), no matter what the average second bid is, if you do this). At an average bid price of \\( 320-10\times 33^{2/3}=217.117 \\), the optimal choice jumps from bidding \\( 200 \\) to bidding \\( 265 \\); this is the point where the returns at the original maximum of \\( 200 \\) in the first part of this round are suppressed below the returns at the local maximum located at \\( 265 \\). At averages above \\( 265 \\), you always do optimally when you bid the average. I ended up selecting \\( 265 \\) (the highest return for a reasonable range of average bid prices), but this ended up hurting me, as the average second bid was way higher at \\( 286 \\).
+
+Why did people bid so high? The phrasing of how the turtles would actually trade was a bit ambiguous. It turns out that the large population of turtles with only one flipper was the same for the first and second bid, meaning that the turtles with reserve prices in the range \\( [160,200] \\) were no longer available to trade with me when I placed my second bid. This changed the expected payoff in the second round rather dramatically. Rather than a cut-off parabola centered at \\( 265 \\), the expected payoff (before factoring in the average second bid) was a parabola centered at 285 (right in the middle of the second range \\( [250,320] \\)).
 
 # Round 4: Competitive suitcase picking (round 2 reprise)
 This round ended up being nearly identical to round 2 in theory, but with more interesting results given the selected numbers. There are now \\( 20 \\) suitcases to choose from, with identical rules for sharing as in round 2. However, one can choose to select a second suitcase for a cost of \\( 50,000 \\) seashells, and a third suitcase for an additional \\( 100,000 \\) seashells. Starting with the same philosophy as round 2, we first restrict ourselves to the simpler case of one-suitcase strategies (of which there are only \\( 20 \\)) and find the distribution where their expected values are equal. In this case, the Lagrange multiplier is \\( \lambda = 56,613.8 \\), meaning that a team can improve its earnings by selecting an additional suitcase. This means that the Nash equilibrium does not contain only one-suitcase strategies, in contrast to round 2.
