@@ -39,7 +39,7 @@ This sequence multiplies your starting currency by \\( 1.08868032 \\). Many othe
 # Round 2: Competitive container picking
 In this round, \\( 10 \\) containers are presented. Each container has a different amount of seashells inside of it \\( c_i \\). When we select a box, we share its contents with some number of *individuals* \\( n_i \\) (also printed on the box) and also with the percentage of teams that select the same box as we do. To be precise, the payout \\( w_i \\) from selecting box \\( i \\) with \\( c_i \\) seashells and \\( n_i \\) individuals when a fraction \\( f_i \\) of the total number of teams also select that box is
 
-$$w_i = \frac{c_i}{n_i+100*f_i}.$$
+$$w_i = \frac{c_i}{n_i+100f_i}.$$
 
 As a twist, we (and everyone else) also have the option to select a second box, for the "low" price of \\( 50,000 \\) seashells (roughly the amount that was won in the entire first manual round).
 
@@ -47,11 +47,11 @@ To study the structure of this problem, it is useful to find the *Nash equilibri
 
 We can start by studying a simplified game, where we are only allowed to pick one of the boxes (it will turn out that this is sufficient to find the Nash equilibrium). Then a *strategy* for a particular team is a set \\( \left\lbrace p_i\right\rbrace \\) of probabilities for picking each box. The expected return of this strategy, given that every other team's own strategy is fixed, is a weighted sum of the returns from each box:
 
-$$\left\langle w\right\rangle=\sum_i\frac{p_i c_i}{n_i+100*f_i}.$$
+$$\left\langle w\right\rangle=\sum_i\frac{p_i c_i}{n_i+100f_i}.$$
 
 For this strategy to be optimal, our team must not be able to do any better by changing our strategy. However, we may not simply perturb each of the \\( p_i \\) independently, since this would violate the constraint that the probabilities sum to \\( 1 \\). This constraint can be enforced using a Lagrange multiplier. Specifically, we can inspect the function
 
-$$\mathcal{L}=\sum_i\frac{p_i c_i}{n_i+100*f_i}-\lambda\left(\sum_ip_i-1\right).$$
+$$\mathcal{L}=\sum_i\frac{p_i c_i}{n_i+100f_i}-\lambda\left(\sum_ip_i-1\right).$$
 
 Then the statement that we are in an extremum with respect to our strategy is the statement
 
@@ -63,7 +63,7 @@ $$\frac{\partial\mathcal{L}}{\partial \lambda}=0.$$
 
 Taking the derivative of \\( \mathcal{L} \\) with respect to an arbitrary \\( p_j \\), we find the relationship
 
-$$\frac{c_j}{n_j+100*f_j}=\lambda$$
+$$\frac{c_j}{n_j+100f_j}=\lambda$$
 
 This gives us an interpretation of \\( \lambda \\): it is the expected return from picking any one of the boxes. The Nash equilibrium is hence achieved when all of the boxes have identical expected value. This can be used to find an equilibrium strategy \\( \left\lbrace p_i\right\rbrace \\) by letting \\( f_i=p_i \\). Now for some concrete numbers: the containers contain the following amounts:
 
@@ -130,7 +130,15 @@ The mean second bid should never be less than \\( 200 \\), since no team will wa
 Why did people bid so high? The phrasing of how the turtles would actually trade was a bit ambiguous. It turns out that the large population of turtles with only one flipper was the same for the first and second bid, meaning that the turtles with reserve prices in the range \\( [160,200] \\) were no longer available to trade with me when I placed my second bid. This changed the expected payoff in the second round rather dramatically. Rather than a cut-off parabola centered at \\( 265 \\), the expected payoff (before factoring in the average second bid) was a parabola centered at \\( 285 \\) (right in the middle of the second range \\( [250,320] \\)).
 
 # Round 4: Competitive suitcase picking (round 2 reprise)
-This round ended up being nearly identical to round 2 in theory, but with more interesting results given the selected numbers. There are now \\( 20 \\) suitcases to choose from, with identical rules for sharing as in round 2. However, one can choose to select a second suitcase for a cost of \\( 50,000 \\) seashells, and a third suitcase for an additional \\( 100,000 \\) seashells. Starting with the same philosophy as round 2, we first restrict ourselves to the simpler case of one-suitcase strategies (of which there are only \\( 20 \\)) and find the distribution where their expected values are equal. In this case, the Lagrange multiplier is \\( \lambda = 56,613.8 \\), meaning that a team can improve its earnings by selecting an additional suitcase. This means that the Nash equilibrium does not contain only one-suitcase strategies, in contrast to round 2.
+This round ended up being nearly identical to round 2 in theory, but with more interesting results given the selected numbers. There are now \\( 20 \\) suitcases to choose from, with identical rules for sharing as in round 2. However, one can choose to select a second suitcase for a cost of \\( 50,000 \\) seashells, and a third suitcase for an additional \\( 100,000 \\) seashells.  For completeness, the containers contain the following amounts:
+
+$$c_i=10,000*\left\lbrace 80, 50, 83, 31, 60, 89, 10, 37, 70, 90, 17, 40, 73, 100, 20, 41, 79, 23, 47, 30 \right\rbrace$$
+
+which are shared with the following numbers of individuals:
+
+$$n_i=\left\lbrace 6, 4, 7, 2, 4, 8, 1, 3, 4, 10, 1, 3, 4, 15, 2, 3, 5, 2, 3, 2 \right\rbrace.$$
+
+Starting with the same philosophy as round 2, we first restrict ourselves to the simpler case of one-suitcase strategies (of which there are only \\( 20 \\)) and find the distribution where their expected values are equal. In this case, the Lagrange multiplier is \\( \lambda = 56,613.8 \\), meaning that a team can improve its earnings by selecting an additional suitcase. This means that the Nash equilibrium does not contain only one-suitcase strategies, in contrast to round 2.
 
 If we do the next-simplest thing, and restrict to one- and two-suitcase strategies, we have \\( 210 \\) possible strategies to pick from (\\( 20 \\) + \\( 20 \\) choose \\( 2 \\)). This means we would need to solve \\( 210 \\) simultaneous equations to find this restricted equilibrium strategy (which means we would need to type them into Python or Mathematica, also). Let's do this in a more creative way, using a stochastic simulation.
 
