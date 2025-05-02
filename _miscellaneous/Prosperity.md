@@ -150,11 +150,11 @@ With the benefit of hindsight, we can make some exact statements about this prob
 
 Why do exactly \\( 25\% \\) of teams end up picking two boxes? This has to do with the specific numbers that are given for the contents of the boxes and number of individuals. Call \\( g_i \\) the fraction of teams that select box \\( i \\). Because each individual box must have an expected value of \\( 50,000 \\) seashells by the arguments above, we have
 
-$$\frac{c_i}{n_i+100g_i}=50,000 \implies g_i = \frac{500}{c_i}-\frac{n_i}{100}.$$
+$$\frac{c_i}{n_i+100g_i}=50,000 \implies g_i = \frac{c_i}{5000000}-\frac{n_i}{100}.$$
 
 The sum of all of the \\( g_i \\) need not equal \\( 1 \\), since some teams pick multiple containers. It is, however, equal to \\( 1 + p_2 \\), where \\( p_2 \\) is the probability that a team will select two containers. Inserting the given numbers gives
 
-$$p_2 = \sum_i\left(\frac{500}{c_i}-\frac{n_i}{100}\right) - 1 = 0.25,$$
+$$p_2 = \sum_i\left(\frac{c_i}{5000000}-\frac{n_i}{100}\right) - 1 = 0.25,$$
 
 as confirmed by the simulation.
 
