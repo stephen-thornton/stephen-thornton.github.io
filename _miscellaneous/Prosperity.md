@@ -154,7 +154,7 @@ $$\frac{c_i}{n_i+100g_i}=50,000 \implies g_i = \frac{500}{c_i}-\frac{n_i}{100}.$
 
 The sum of all of the \\( g_i \\) need not equal \\( 1 \\), since some teams pick multiple containers. It is, however, equal to \\( 1 + p_2 \\), where \\( p_2 \\) is the probability that a team will select two containers. Inserting the given numbers gives
 
-$$p_2 = \sum_i\left(\frac{500}{c_i}-\frac{n_i}{100}\right) = 0.25,$$
+$$p_2 = \sum_i\left(\frac{500}{c_i}-\frac{n_i}{100}\right) - 1 = 0.25,$$
 
 as confirmed by the simulation.
 
