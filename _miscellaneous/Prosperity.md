@@ -30,7 +30,7 @@ A legal trade sequence is a string of at most \\( 6 \\) digits that starts and e
 
 We can further reduce the computational time by noting that trading a currency for itself is \\( 1-1 \\), and so a trade that contains the same number multiple times in a row is equivalent to a trade of shorter length; for instance, the returns of \\( 0122 \\) and \\( 012 \\) are identical. The fact that we start and end with seashells means that none of our unique strings should begin or end with \\( 3 \\).
 
-I implement this trading procedure in Python by first enumerating all distinct trades and then computing their returns. There are \\( 3 \\) strategies of length \\( 2 \\) (can you see what they are?), \\( 6 \\) strategies of length \\( 3 \\) (this is also quick to check), \\( 21 \\) strategies of length \\( 4 \\), and \\( 60 \\) strategies of length \\( 5 \\). These can all be checked by considering the possible legal options for each slot in the trade string, treating separately the number of internal insertions of seashells. For instance, the distinct trades of length \\( 5 \\) can be counted as
+I implement this trading procedure in Python by first enumerating all distinct trades and then computing their returns. There are \\( 3 \\) strategies of length \\( 2 \\) (can you see what they are?), \\( 6 \\) strategies of length \\( 3 \\), \\( 21 \\) strategies of length \\( 4 \\), and \\( 60 \\) strategies of length \\( 5 \\). These can all be checked by considering the possible legal options for each slot in the trade string, treating separately the number of internal insertions of seashells. For instance, the distinct trades of length \\( 5 \\) can be counted as
 
 $$ 3\cdot 2\cdot 2 \cdot 2 {2 \choose 0} + 3\cdot 3\cdot 2 {2 \choose 1} = 60 $$
 
