@@ -34,7 +34,7 @@ I implement this trading procedure in Python by first enumerating all distinct t
 
 $$ 3\cdot 2\cdot 2 \cdot 2 {2 \choose 0} + 3\cdot 3\cdot 2 {2 \choose 1} = 60 $$
 
-where the combinatorial pieces come from choosing where in the sequence to place seashells (\\( 3 \\)s) and the multiplicative factors are the numbers of possible choices of currency in each of the other trade places once the (\\(3\\)s) have been placed.
+where the combinatorial pieces come from choosing where in the sequence to place seashells (\\( 3 \\)s) and the multiplicative factors are the numbers of possible choices of currency in each of the other places in the string once the (\\(3\\)s) have been placed.
 
 In principle, a shorter strategy could be optimal, so all need to be checked. But it turns out that the optimal strategy is \\( 0210 \\), corresponding to the following trade sequence:
 
