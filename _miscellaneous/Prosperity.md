@@ -34,10 +34,10 @@ I implement this trading procedure in Python by first enumerating all distinct t
 
 $$
 \begin{align*}
-\textrm{Length } 2:& 3 &= 3 \\
-\textrm{Length } 3:& 3\cdot 2 &= 6 \\
-\textrm{Length } 4:& 3\cdot 2\cdot 2 {1 \choose 0}+3\cdot3 {1\choose 1} &= 21 \\
-\textrm{Length } 5:& 3\cdot 2\cdot 2 \cdot 2 {2 \choose 0} + 3\cdot 3\cdot 2 {2 \choose 1} &= 60
+\textrm{Length } 2: & \textrm{  } 3 &= 3 \\
+\textrm{Length } 3: & \textrm{  } 3\cdot 2 &= 6 \\
+\textrm{Length } 4: & \textrm{  } 3\cdot 2\cdot 2 {1 \choose 0}+3\cdot3 {1\choose 1} &= 21 \\
+\textrm{Length } 5: & \textrm{  } 3\cdot 2\cdot 2 \cdot 2 {2 \choose 0} + 3\cdot 3\cdot 2 {2 \choose 1} &= 60
 \end{align*}
 $$
 
