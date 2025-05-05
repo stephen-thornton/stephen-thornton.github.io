@@ -32,10 +32,12 @@ We can further reduce the computational time by noting that trading a currency f
 
 I implement this trading procedure in Python by first enumerating all distinct trades and then computing their returns. There are \\( 3 \\) strategies of length \\( 2 \\) (can you see what they are?), \\( 6 \\) strategies of length \\( 3 \\) (this is also quick to check), \\( 21 \\) strategies of length \\( 4 \\), and \\( 60 \\) strategies of length \\( 5 \\). These can all be checked by considering the possible legal options for each slot in the trade string:
 
-$$\textrm{Length } 2: 3$$
-$$\textrm{Length } 3: 3\cdot 2 = 6$$
-$$\textrm{Length } 4: 3\cdot 2\cdot 2 {1 \choose 0}+3\cdot3 {1\choose 1} = 21$$
-$$\textrm{Length } 5: 3\cdot 2\cdot 2 \cdot 2 {2 \choose 0} + 3\cdot 3\cdot 2 {2 \choose 1} = 60$$
+\begin{align}
+\textrm{Length } 2: 3 &= 3 \\
+\textrm{Length } 3:& 3\cdot 2 &= 6 \\
+\textrm{Length } 4:& 3\cdot 2\cdot 2 {1 \choose 0}+3\cdot3 {1\choose 1} &= 21 \\
+\textrm{Length } 5:& 3\cdot 2\cdot 2 \cdot 2 {2 \choose 0} + 3\cdot 3\cdot 2 {2 \choose 1} &= 60
+\end{align}
 
 In principle, a shorter strategy could be optimal, so all need to be checked. But it turns out that the optimal strategy is \\( 0210 \\), corresponding to the following trade sequence:
 
