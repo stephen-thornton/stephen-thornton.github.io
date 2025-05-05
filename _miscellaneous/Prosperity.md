@@ -30,16 +30,11 @@ A legal trade sequence is a string of at most \\( 6 \\) digits that starts and e
 
 We can further reduce the computational time by noting that trading a currency for itself is \\( 1-1 \\), and so a trade that contains the same number multiple times in a row is equivalent to a trade of shorter length; for instance, the returns of \\( 0122 \\) and \\( 012 \\) are identical. The fact that we start and end with seashells means that none of our unique strings should begin or end with \\( 3 \\).
 
-I implement this trading procedure in Python by first enumerating all distinct trades and then computing their returns. There are \\( 3 \\) strategies of length \\( 2 \\) (can you see what they are?), \\( 6 \\) strategies of length \\( 3 \\) (this is also quick to check), \\( 21 \\) strategies of length \\( 4 \\), and \\( 60 \\) strategies of length \\( 5 \\). These can all be checked by considering the possible legal options for each slot in the trade string, treating separately the number of internal insertions of seashells:
+I implement this trading procedure in Python by first enumerating all distinct trades and then computing their returns. There are \\( 3 \\) strategies of length \\( 2 \\) (can you see what they are?), \\( 6 \\) strategies of length \\( 3 \\) (this is also quick to check), \\( 21 \\) strategies of length \\( 4 \\), and \\( 60 \\) strategies of length \\( 5 \\). These can all be checked by considering the possible legal options for each slot in the trade string, treating separately the number of internal insertions of seashells. For instance, the distinct trades of length \\( 5 \\) can be counted as
 
-$$
-\begin{align*}
-\textrm{Length } 2: & \textrm{  } 3 &= 3 \\
-\textrm{Length } 3: & \textrm{  } 3\cdot 2 &= 6 \\
-\textrm{Length } 4: & \textrm{  } 3\cdot 2\cdot 2 {1 \choose 0}+3\cdot3 {1\choose 1} &= 21 \\
-\textrm{Length } 5: & \textrm{  } 3\cdot 2\cdot 2 \cdot 2 {2 \choose 0} + 3\cdot 3\cdot 2 {2 \choose 1} &= 60
-\end{align*}
-$$
+$$ 3\cdot 2\cdot 2 \cdot 2 {2 \choose 0} + 3\cdot 3\cdot 2 {2 \choose 1} = 60 $$
+
+where the combinatorial pieces come from choosing where in the sequence to place seashells (\\( 3 \\)s) and the multiplicative factors are the numbers of possible choices of currency in each of the other trade places once the (\\(3\\)s) have been placed.
 
 In principle, a shorter strategy could be optimal, so all need to be checked. But it turns out that the optimal strategy is \\( 0210 \\), corresponding to the following trade sequence:
 
