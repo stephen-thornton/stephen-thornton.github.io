@@ -24,11 +24,11 @@ author:
   avatar           : "profile.png"
   name             : "Stephen J. Thornton"
   pronouns         : "he/him"  
-  bio              : "I am a PhD student at Cornell University working under Prof. Jim Sethna. I am broadly interested in statistical mechanics and critical phenomena, especially as applied to soft matter systems."
-  location         : "Ithaca, NY"
-  employer         : "Cornell University"
+  bio              : "I am a postdoctoral associate modeling non-equilibrium processes in biophysics with Prof. Shenshen Wang at UCLA. Before this, I was a PhD student at Cornell University working with Prof. Jim Sethna. I am broadly interested in statistical modeling, especially as applied to soft matter systems."
+  location         : "Los Angeles, CA"
+  employer         : "UCLA"
   uri              : # URL
-  email            : "sjt95 [at] cornell.edu" 
+  email            : "sthornton [at] physics.ucla.edu" 
 
   # Academic websites
   arxiv            : "https://arxiv.org/search/cond-mat?searchtype=author&query=Thornton%2C+S+J"
